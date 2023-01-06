@@ -5,6 +5,13 @@ const dbName = "nodepopdb";
 const fs = require('fs');
 const fileName = "./anuncios.json";
 
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 async function init_db() {
 
     await mongoose.connect(`mongodb://127.0.0.1:27017/` + dbName).then(() => {
@@ -25,4 +32,18 @@ async function init_db() {
     mongoose.connection.close();
 }
 
-init_db();
+async function init_main() {
+
+    rl.question('Do you really want to delete the database? (y/n) ', (answer) => {
+        if (answer === 'y') {
+            init_db();
+        } else if (answer != 'n') {
+            console.log('Invalid answer.');
+        }
+
+        rl.close();
+    });
+}
+
+
+init_main();
