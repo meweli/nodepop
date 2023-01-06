@@ -4,7 +4,7 @@ var router = express.Router();
 
 const Schema = mongoose.Schema;
 
-const addSchema = new Schema({
+const adSchema = new Schema({
   nombre: String,
   venta: Boolean,
   precio: Number,
@@ -12,14 +12,14 @@ const addSchema = new Schema({
   tags: [String]}
 );  
 
-const addsCollection = mongoose.model("Add", addSchema, "adds");
+const adsCollection = mongoose.model("Ad", adSchema, "ads");
 
 /* GET home page */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Nodepop (api V1!)' });
 });
 
-function generate_adds_query(req) {
+function generate_ads_query(req) {
   // parses the URL query into the required mongoDB query format, 
   // according to the API specification
 
@@ -64,13 +64,13 @@ function generate_adds_query(req) {
 
 }
 
-// GET adds with filters and return options.
-router.get('/adds', async function (req, res) {
+// GET ads with filters and return options.
+router.get('/ads', async function (req, res) {
 
   // parse parameters and get query
-  const query = generate_adds_query(req);
+  const query = generate_ads_query(req);
 
-  let adds = await addsCollection.find(query).sort(query.sort);
+  let ads = await adsCollection.find(query).sort(query.sort);
 
   // induce pageing by default
   if (!("start" in query)) {
@@ -78,16 +78,16 @@ router.get('/adds', async function (req, res) {
   }
 
   if (!("limit" in query)) {
-    query["limit"] = adds.length;
+    query["limit"] = ads.length;
   }
 
-  // return the filtered list of adds as a JSON response
-  res.json(adds.slice(query.start, query.limit));
+  // return the filtered list of ads as a JSON response
+  res.json(ads.slice(query.start, query.limit));
 });
 
 // GET existing unique tags tags
 router.get('/tags', async function (req, res) {
-  const uniqueTagLists = await addsCollection.distinct("tags");
+  const uniqueTagLists = await adsCollection.distinct("tags");
   res.send(uniqueTagLists);
 });
 

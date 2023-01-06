@@ -1,8 +1,6 @@
-// todo add to npm
-
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
-const collectionName = "adds";
+const collectionName = "ads";
 const dbName = "nodepopdb";
 const fs = require('fs');
 const fileName = "./anuncios.json";
