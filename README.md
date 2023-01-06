@@ -4,7 +4,7 @@
 
 ## Overview
 
-This repository implements an add API. This API provides developers a set of tools for accessing a collection of adds in various ways, as well as the option to create new ones.
+This repository implements an add API. This API provides developers a set of tools for accessing a collection of adds in various ways.
 
 ## Installation and setting up
 
