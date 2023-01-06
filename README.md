@@ -54,9 +54,11 @@ and be able to access it in `localhost:3000`. Make sure that the port is not in 
         - `price` has the format `n-m`, where `n` and `m` are a number: returns ads whose field `precio` is between `n` and `m`, inclusive.
 - Return options:
     - `sort=fieldName`. (`fieldName`: `string`). Sorts the ads ascending by the specified `fieldName`.
-    - Pageing fields:
+    - Paging fields:
         - `start=n` (`n`: `int`). Specifies the starting ad to be shown. That is, if a query returns 10 ads, `start=5` will make it so that only the last 5 ads are shown.
-        - `end=n` (`n`: `int`). Specifies the starting ad to be shown. That is, if a query returns 10 ads, `end=5` will make it so that only the first 5 ads are shown.
+        - `limit=n` (`n`: `int`). Specifies the number of ads to be shown. That is, if a query returns 10 ads, `limit=5` will make it so that only the first 5 ads are shown.
+        - A value of `0` (default) makes it so that all ads are shown (start is the beginning and there is no limit).
+        - Both fields can work in conjuction to implement paging: given 10 adds `limit=5` will show the first 5 and `start=5&limit=5` will show the last 5.
 
 Example **GET**
 

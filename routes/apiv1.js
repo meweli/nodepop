@@ -70,19 +70,24 @@ router.get('/ads', async function (req, res) {
   // parse parameters and get query
   const query = generate_ads_query(req);
 
-  let ads = await adsCollection.find(query).sort(query.sort);
-
-  // induce pageing by default
+  // induce paging by default
   if (!("start" in query)) {
     query["start"] = 0;
   }
 
   if (!("limit" in query)) {
-    query["limit"] = ads.length;
+    query["limit"] = 0;
   }
 
+  let ads = await adsCollection
+                          .find(query)
+                          .skip(query.start)
+                          .limit(query.limit)
+                          .sort(query.sort);
+
+
   // return the filtered list of ads as a JSON response
-  res.json(ads.slice(query.start, query.limit));
+  res.json(ads);
 });
 
 // GET existing unique tags tags
