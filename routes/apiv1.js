@@ -25,8 +25,6 @@ function generate_adds_query(req) {
 
     let query = req.query;
 
-    console.log(query);
-
     if ("tag" in query) {
       query["tags"] = query.tag;
       delete query["tag"];
@@ -61,8 +59,6 @@ function generate_adds_query(req) {
       }
       query["precio"] = priceQuery;
     }
-
-    console.log(query);
 
     return query;
 
