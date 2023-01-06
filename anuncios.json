@@ -11,5 +11,26 @@
         "precio": 50.00,
         "foto": "iphone.jpg",
         "tags": [ "lifestyle", "mobile"]
+    },
+    {
+        "nombre": "Michi",
+        "venta": false,
+        "precio": 4.00,
+        "foto": "michi.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "nombre": "Perrete",
+        "venta": false,
+        "precio": 1000.00,
+        "foto": "perrete.png",
+        "tags": ["lifestyle"]
+    },
+    {
+        "nombre": "Motomami Deluxe",
+        "venta": true,
+        "precio": 25.00,
+        "foto": "motomami.png",
+        "tags": [ "work" , "motor"]
     }
 ]
